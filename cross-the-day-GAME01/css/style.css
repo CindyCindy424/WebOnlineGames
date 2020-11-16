@@ -1,0 +1,377 @@
+/* Tongji University SSE
+*    1850477 邓欣凌
+*     Web 课程作业
+*/
+
+
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2em;
+  color: white;
+  overflow: hidden;
+}
+button {
+  outline: none;
+  cursor: pointer;
+  border: none;
+}
+.music {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: rgb(53, 53, 53);
+  background: #EFEFEF;
+  border-radius: 50px;
+  width: 50px;
+  height: 30px;
+  position: fixed;
+  bottom: 100px;
+  right: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 5px 10px 18px #57565646;
+  font-weight: bold;
+
+  cursor: pointer;
+  z-index:9;
+}
+#music-on {
+  visibility: visible;
+  cursor: pointer;
+
+}
+#music-close {
+  visibility: hidden;
+  cursor: pointer;
+
+}
+#counter {
+  position: absolute;
+  color:black;
+  top: 60px;
+  right: 20px;
+  background-color: violet;
+}
+#show-level {
+  position: absolute;
+  color:black;
+  top: 15px;
+  right: 20px;
+  position: flex;
+  background-color: violet;
+}
+#end {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+#end button {
+  background-color: rgb(231, 50, 18);
+  padding: 20px 50px 20px 50px;
+  font-family: inherit;
+  font-size: inherit;
+  animation : colorPop 2s linear infinite;
+  -webkit-animation:colorPop 2s linear infinite; /* Safari 和 Chrome */
+  -moz-animation:colorPop 2s linear infinite; /* Safari 和 Chrome */
+}
+#controls {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: left;
+  padding: 25px;
+}
+#controls div {
+  display: grid;
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: auto auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin-bottom: 30px;
+}
+#controls button {
+  width: 100%;
+  background-color: white;
+  border-radius: 3px;
+}
+#controls button:first-of-type {
+  grid-column: 1/-1;
+}
+#instructions {
+  position: absolute;
+  background-color:rgba(176,237,109,0);
+  left: 0px;
+  top: 0px;
+  
+}
+#close-ins {
+  position: absolute;
+  font-size: 20px;
+  left: 230px;
+  top: 20px;
+  z-index: 10;
+  cursor: pointer;
+}
+#help-btn {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: rgb(53, 53, 53);
+  background: white;
+  border-radius: 50px;
+  width: 100px;
+  height: 30px;
+  position: fixed;
+  top: 30px;
+  left: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 5px 10px 18px #57565646;
+  font-weight: bold;
+
+  visibility: hidden;
+  cursor: pointer;
+
+  z-index:9;
+}
+.starter {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: visible;
+  flex-wrap: wrap;
+  flex-direction: row;
+  cursor: pointer;
+
+}
+#logo {
+  margin-left:20%;
+  margin-right: 20%;
+  margin-bottom:20%;
+  background-color: lightcoral;
+  flex-wrap:nowrap;
+}
+#easy,#middle,#hard {
+  /*background-color: rgb(231, 50, 18);*/
+  background-color: #32ABFC;
+  padding: 20px 40px 20px 40px;
+  margin: 30px;
+  margin-top: 23%;
+  font-family: inherit;
+  font-size: 17px;
+  cursor: pointer;
+  z-index:20;
+  box-shadow: 3px 3px 2px #888888;
+}
+#easy {
+  margin-right: 30%;
+  box-shadow: 10px 10px 5px #888888;
+}
+#hard {
+  margin-left:30%;
+}
+
+
+#start {
+  color: rgb(53, 53, 53);
+  background: white;
+  font-family: inherit;
+  font-size:30px;
+  
+  width: 220px;
+  height: 70px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 5px 10px 18px #57565646;
+  font-weight: bold;
+  cursor: pointer;
+  
+  z-index:10;
+  
+}
+
+
+#easy {
+  left: 500px;
+  top: 500px;
+}
+#score {
+  margin-top: 30%;
+  color:#002060;
+  background-color: salmon;
+}
+#dead-chicken {
+  visibility: hidden;
+  position:absolute;
+}
+
+.credits {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: rgb(53, 53, 53);
+  background: white;
+  border-radius: 50px;
+  width: 160px;
+  height: 60px;
+  position: fixed;
+  bottom: 30px;
+  right: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 5px 10px 18px #57565646;
+  font-weight: bold;
+}
+#box {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+#close-keyboard {
+  position: absolute;
+  background-color:rgba(84,87,90,1);
+  font-size: 13px;
+  left: 195px;
+  bottom: 70px;
+  z-index: 10;
+  cursor: pointer;
+}
+#keyboard {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: rgb(53, 53, 53);
+  background: #EFEFEF;
+  border-radius: 50px;
+  width: 100px;
+  height: 30px;
+  position: fixed;
+  bottom:30px;
+  left: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 5px 10px 18px #57565646;
+  font-weight: bold;
+
+  visibility: hidden;
+  z-index: 15;
+}
+
+
+
+@keyframes colorPop {
+  0%, 100% {
+    color: white;
+    background: rgb(231, 50, 18);
+  }
+  10%, 90% {
+    color: black;
+    background: yellow;
+  }
+  20%, 80% {
+    color: white;
+    background: rgb(98, 98, 255);
+  }
+  30%, 70% {
+    color: white;
+    background: rgb(252, 34, 168);
+  }
+  35%, 65% {
+    color: black;
+    background: rgb(255, 85, 141);
+  }
+  40%, 70% {
+    color: white;
+    background: rgb(234, 6, 255);
+  }
+  50% {
+    color: black;
+    background: white;
+  }
+}
+
+@-moz-keyframes colorPop {
+  0%, 100% {
+    color: white;
+    background: rgb(231, 50, 18);
+  }
+  10%, 90% {
+    color: black;
+    background: yellow;
+  }
+  20%, 80% {
+    color: white;
+    background: rgb(98, 98, 255);
+  }
+  30%, 70% {
+    color: white;
+    background: rgb(252, 34, 168);
+  }
+  35%, 65% {
+    color: black;
+    background: rgb(255, 85, 141);
+  }
+  40%, 70% {
+    color: white;
+    background: rgb(234, 6, 255);
+  }
+  50% {
+    color: black;
+    background: white;
+  }
+}
+
+@-webkit-keyframes colorPop {
+  0%, 100% {
+    color: white;
+    background: rgb(231, 50, 18);
+  }
+  10%, 90% {
+    color: black;
+    background: yellow;
+  }
+  20%, 80% {
+    color: white;
+    background: rgb(98, 98, 255);
+  }
+  30%, 70% {
+    color: white;
+    background: rgb(252, 34, 168);
+  }
+  35%, 65% {
+    color: black;
+    background: rgb(255, 85, 141);
+  }
+  40%, 70% {
+    color: white;
+    background: rgb(234, 6, 255);
+  }
+  50% {
+    color: black;
+    background: white;
+  }
+}

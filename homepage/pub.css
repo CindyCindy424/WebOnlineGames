@@ -1,0 +1,64 @@
+/* Tongji University SSE
+*    1850477 邓欣凌
+*     Web 课程作业
+*/
+
+
+@font-face {
+    font-family: 'PingFang SC';
+    src: url('./../resource/font/PingFang Regular.ttf');
+}
+
+@font-face {
+    font-family: 'PingFang SC Medium';
+    src: url('./../resource/font/PingFang Medium.ttf');
+}
+
+@font-face {
+    font-family: 'PingFang SC Bold';
+    src: url('./../resource/font/PingFang Bold.ttf');
+}
+
+@font-face {
+    font-family: 'PingFang SC Light';
+    src: url('./../resource/font/PingFang Light.ttf');
+}
+
+@font-face {
+    font-family: 'Source Han Sans CN Regular';
+    src: url('./../resource/font/SourceHanSansCN Regular.otf');
+}
+
+@font-face {
+    font-family: 'Source Han Sans CN Heavy';
+    src: url('./../resource/font/SourceHanSansCN Heavy.otf');
+}
+
+@font-face {
+    font-family: 'Source Han Sans CN Medium';
+    src: url('./../resource/font/SourceHanSansCN Medium.otf');
+}
+
+*{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+    /* line-height: 1; */
+    /*background-color: #F3FFBD;*/
+}
+
+body{
+    font-family: 'PingFang SC', 'Source Han Sans CN Regular';
+    font-family: 'Source Han Sans CN Regular', 'PingFang SC';
+    color: #555;
+    /*background-image: url(../../res/bkg1.png);*/
+    /*background-color:#F3FFBD ;*/
+    /*background: linear-gradient(to left, rgb(249, 149, 127),rgb(242, 245, 208))*/
+    background: linear-gradient(to right, rgb(41, 128, 185),rgb(109, 213, 250),rgb(255, 255, 255));
+
+}
+
+embed{
+    width: 100%;
+    height: 100%;
+}

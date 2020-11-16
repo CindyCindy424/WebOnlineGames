@@ -1,0 +1,307 @@
+
+/* Tongji University SSE
+*    1850477 邓欣凌
+*     Web 课程作业
+*/
+
+
+/* top rect */
+
+.top {
+    height: 480px;
+    width: 100%;
+    /*background-image: url(../../res/bkg.png);*/
+    background-size: cover;
+}
+
+.top .menu-wrapper {
+    display: fixed;
+    top: 10px;
+}
+
+.top .menu {
+    color: #FFFFA8;
+    display: flex;
+    padding: 10px 20px 10px 20px;
+    font-family: 'PingFang SC';
+    /* background-color: #000000a3; */
+}
+
+.top .menu-item {
+    font-size: 18px;
+    margin: 0px 5px 0px 5px;
+}
+
+.top .menu-item-a {
+    padding: 2px 15px 2px 15px;
+    border-radius: 5px;
+    transition: 0.2s;
+    /* background: rgba(255, 255, 255, 0.3); */
+}
+
+.top .menu-item-b {
+    padding: 2px 5px 2px 5px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.top .menu-item:hover {
+    cursor: pointer;
+}
+
+.top .menu-item-a:hover,
+.top .menu-item-b:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.top .title-wrapper {
+    color: #FFFFA8;
+    text-align: center;
+}
+
+.top .title {
+    font-size: 65px;
+    font-family: 'Source Han Sans CN Medium';
+    /* font-family: 'Source Han Sans CN Heavy'; */
+    margin-top: 50px;
+}
+
+.top .description {
+    font-size: 26px;
+    font-family: 'Source Han Sans CN Medium';
+    /* font-family: 'Source Han Sans CN Heavy'; */
+    margin-top: 10px;
+}
+
+/* mid rect */
+
+.mid {
+    padding: 50px 0 0 0;
+    margin: auto;
+    width: 1200px;
+    line-height: 1;
+    /* background-color: bisque; */
+    /* height: 123px;; */
+}
+
+.mid .menu {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    color: #555555;
+}
+
+.mid .menu .menu-big-class {
+    font-size: 27px;
+    margin-right: 20px;
+    font-family: 'Source Han Sans CN Medium';
+}
+
+.mid .menu .menu-small-class {
+    font-size: 15px;
+    margin-right: 10px;
+    font-family: 'Source Han Sans CN Regular';
+}
+
+.mid .menu .menu-small-class::before {
+    content: "/";
+    font-size: 14px;
+    color: #fe9d59;
+    margin-right: 10px;
+}
+
+.mid .flowers {
+    display: flex;
+    /* justify-content: space-between; */
+    font-family: "宋体";
+}
+
+.mid .flowers {
+    margin-right: 20px;
+}
+
+.mid .flowers .cover {
+    height: 185px;
+    width: 185px;
+
+    background-color: #f3f3f3;
+    background-size: cover;
+}
+
+.mid .flowers .title {
+    font-size: 13px;
+    margin: 5px 3px 5px 3px;
+}
+
+.mid .flowers .retailer {
+    font-size: 12px;
+    color: #888;
+    margin: 5px 3px 5px 3px;
+    background-color: cornsilk;
+}
+
+.mid .flowers .price-rect {
+    font-size: 16px;
+    margin: 5px 3px 25px 3px;
+}
+
+.mid .flowers .price-rect .after {
+    font-family: "Source Han Sans CN Heavy";
+    color: #CC3300;
+    margin-right: 5px;
+}
+
+.mid .flowers .price-rect .before {
+    font-family: "Source Han Sans CN Medium";
+    color: #AAAAAA;
+    text-decoration: line-through;
+}
+
+.mid .flowers .price:before {
+    content: '￥';
+}
+
+.mid .flowers .btns {
+    display: flex;
+    margin: 5px 3px 5px 3px;
+    padding: 3px 0 3px 0;
+
+    /* font-family: "Source Han Sans CN Regular";
+    color: #ffffff; */
+    font-size: 12px;
+    margin: 10px 3px 30px 3px;
+    border-radius: 4px;
+    /* border: 1px solid #CC3300; */
+    background: #F5F5F5;
+}
+
+.mid .flowers .btns .btn {
+    flex: 1;
+    text-align: center;
+    line-height: 20px;
+    height: 20px;
+}
+
+.mid .flowers .btns .btn:first-child {
+    border-right: 1px solid #ffffff;
+}
+
+.mid .flowers .btns embed {
+    width: 18px;
+    height: 18px;
+}
+
+#flower {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    flex-wrap: wrap;
+    flex-direction: row;
+    top: 0px;
+    left: 20px;
+}
+
+#pic2 {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    flex-wrap: wrap;
+    flex-direction: row;
+    bottom: 0px;
+    right: 0px;
+}
+
+
+
+#pic-flower {
+    width: 280px;
+    height: 300px;
+}
+#pic-heart {
+    width: 280px;
+    height: 300px;
+}
+
+.flower {
+    margin-right: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#bigBox {
+    /*display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    flex-wrap: wrap;
+    flex-direction: row;*/
+    position: absolute;
+    cursor: pointer;
+    width : 100%;
+    height: 450px;
+    align-items: center;
+}
+
+button.btn {
+    color: #FFFFA8;
+    cursor: pointer;
+    padding: 10px 20px 10px 20px;
+    /*font-family: 'PingFang SC';*/
+    font-family: 'Source Han Sans CN Medium';
+    font-size: 20px;
+    font-weight: 200;
+    margin: 60px 100px 0px 100px;
+    padding: 2px 15px 2px 15px;
+    border-radius: 5px;
+    transition: 0.2s;
+    background-color: rgba(95, 177, 232, 0.3);
+    -moz-box-shadow: 10px 10px 5px #888888; /* 老的 Firefox */
+    box-shadow: 10px 10px 5px #888888;
+}
+
+a.link {
+    color: #FFFFA8;
+    text-decoration-line: none;
+    font-family: 'Source Han Sans CN Medium';
+    font-weight: 200;
+}
+
+
+.pic {
+    margin: 30px;
+    -moz-box-shadow: 10px 10px 5px #888888; /* 老的 Firefox */
+    box-shadow: 5px 5px 2px #888888;
+}
+
+
+
+/*
+.top .menu {
+    color: #FFFFA8;
+    display: flex;
+    padding: 10px 20px 10px 20px;
+    font-family: 'PingFang SC';
+    
+}
+
+.top .menu-item {
+    font-size: 18px;
+    margin: 0px 5px 0px 5px;
+}
+
+.top .menu-item-a {
+    padding: 2px 15px 2px 15px;
+    border-radius: 5px;
+    transition: 0.2s;
+    
+}
+*/

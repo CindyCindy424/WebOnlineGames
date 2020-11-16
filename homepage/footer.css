@@ -1,0 +1,18 @@
+/* Tongji University SSE
+*    1850477 邓欣凌
+*     Web 课程作业
+*/
+
+
+footer{
+    height: 100px;
+    margin-top: 90px;
+   /*border-top: 1px solid #f5f5f5;*/
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 2.0;
+    /*color: #aaa;*/
+    color:#0E6AD3;
+    bottom: 0px;
+}

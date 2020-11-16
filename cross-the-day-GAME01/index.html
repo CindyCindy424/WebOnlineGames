@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<!-- Tongji University SSE -->
+<!----- 1850477 邓欣凌 ----->
+<!------ Web 课程作业 ------>
+
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta author="1850477 邓欣凌 TongjiSSE">
+  <title>小鸡过马路</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./res/image/favicon.ico">
+
+  <script src="./js/jquery.js"></script>
+
+  
+</head>
+<body>
+<div id="counter">Scores：0</div>
+<div id="show-level">Easy</div>
+    
+<div id="instructions">
+  <img src = "./res/image/ins.png" alt = instructions width = "270" height = "360">
+</div>
+
+<div id="close">
+  <botton id="close-ins">
+    ❌
+  </botton>
+</div>
+
+<div id="help-btn">
+  <botton id="help">
+    🙌 Help 
+  </botton>
+</div>
+
+<div id="box">
+  <img src="./res/image/box4.png" alt = box width = "250" height="140">
+</div>
+<div id="close-box">
+  <button id='close-keyboard'>❌</button>
+</div>
+<div id="keyboard">
+  <button>⌨ Keyboard</button>
+</div>
+
+<!------- 音效设置 --------->
+<div class = "music" id="music-on">
+  <button>🔊</button>
+</div>
+<div class = "music" id="music-close">
+  <button>🔈</button>
+</div>
+<!--<audio autoplay=true preloade="metadata" loop=true src="./res/audio/background.mp3" id="bkg"></audio>-->
+<audio autoplay="autoplay"  loop="loop" preload="auto" id="bkg" src="./res/audio/background.mp3"></audio>
+<script>
+  document.getElementById('bkg').play();
+  document.getElementById('bkg').volume = 0.5;
+
+
+</script>
+
+
+<audio src="./res/audio/chickendeath.wav" id="chicken-death"></audio>
+<audio src="./res/audio/carexplosion.mp3" id='carhit'></audio>
+<audio src="./res/audio/Pop_1.wav" id="pop"></audio>
+<audio src="./res/audio/start.wav" id="start-music"></audio>
+
+<!---- 设置开始界面 ---->
+<div class="starter">
+   <div id="logo"> CROSS THE DAY </div>
+</div>
+<div class="starter">
+ <button id="easy">Easy</button>
+</div>
+<div class="starter">
+ <button id="middle">Middle</button>
+</div>
+<div class="starter">
+ <button id="hard">Hard</button>
+</div>
+<div class="starter">
+  <button id="start">Start</button>
+</div>
+
+<div class="starter">
+  <p id="score"></p>
+</div>
+
+<div id="controls">
+  <div>
+    <!--svg 绘制上下左右点击键的图标-->
+    <button id="forward">
+      <svg width="30" height="30" viewBox="0 0 10 10">
+        <g transform="rotate(0,5,5)">
+          <path d="M5,4 L7,6 L3,6 L5,4" />
+        </g>
+      </svg>
+    </button>
+    <button id="left">
+      <svg width="30" height="30" viewBox="0 0 10 10">
+        <g transform="rotate(-90, 5,5)">
+          <path d="M5,4 L7,6 L3,6 L5,4" />
+        </g>
+      </svg>
+    </button>
+    <button id="backward">
+      <svg width="30" height="30" viewBox="0 0 10 10">
+        <g transform="rotate(180, 5,5)">
+          <path d="M5,4 L7,6 L3,6 L5,4" />
+        </g>
+      </svg>
+    </button>
+    <button id="right">
+      <svg width="30" height="30" viewBox="0 0 10 10">
+        <g transform="rotate(90, 5,5)">
+          <path d="M5,4 L7,6 L3,6 L5,4" />
+        </g>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div id="dead-chicken">
+  <img src="./res/deadChicken.png" alt="dead-chicken" width="50px" height="50px">
+</div>
+
+<!-- 结束提示Retry -->
+<div id="end">
+  <button id="retry">Retry</button>
+</div>
+
+<div class= "credits">
+  <p>  👩‍💻  Tongji SSE <br>1850477 邓欣凌</p>
+</div>
+
+<script src='./js/three.min.js'></script>
+<script  src="./js/script.js"></script>
+
+</body>
+</html>

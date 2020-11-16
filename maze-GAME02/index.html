@@ -1,0 +1,483 @@
+<!-- Tongji University SSE -->
+<!----- 1850477 邓欣凌 ----->
+<!------ Web 课程作业 ------>
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta author="1850477 邓欣凌">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小球迷宫</title>
+    <script src='./js/Box2dWeb.min.js'></script>
+    <script src="./js/Three.js"></script>
+    <script src="./js/keyboard.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/maze.js"></script>
+    <!--<script src="./js/timer.js"></script>-->
+
+    <script>
+        var camera = undefined,
+            scene = undefined,
+            renderer = undefined,
+            light = undefined,
+            mouseX = undefined,
+            mouseY = undefined,
+            maze = undefined,
+            mazeMesh = undefined,
+            mazeDimension = 19,
+            planeMesh = undefined,
+            ballMesh = undefined,
+            ballRadius = 0.25,
+            keyAxis = [0, 0], //设定主轴坐标
+            ironTexture = THREE.ImageUtils.loadTexture('./res/style07.png'),
+            planeTexture = THREE.ImageUtils.loadTexture('./res/concrete.png'),
+            brickTexture = THREE.ImageUtils.loadTexture('./res/wall10.png'),
+            gameState = undefined,
+
+            // Box2D 相关变量
+            b2World = Box2D.Dynamics.b2World,
+            b2FixtureDef = Box2D.Dynamics.b2FixtureDef,
+            b2BodyDef = Box2D.Dynamics.b2BodyDef,
+            b2Body = Box2D.Dynamics.b2Body,
+            b2CircleShape = Box2D.Collision.Shapes.b2CircleShape,
+            b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape,
+            b2Settings = Box2D.Common.b2Settings,
+            b2Vec2 = Box2D.Common.Math.b2Vec2,
+
+            // Box2D world 变量
+            wWorld = undefined,
+            wBall = undefined;
+
+
+        function createPhysicsWorld() {
+            // 创建box2d 世界
+            wWorld = new b2World(new b2Vec2(0, 0), true);
+
+            /*———————————— 创建球体 ——————————————*/
+            //定义body
+            var bodyDef = new b2BodyDef();
+            bodyDef.type = b2Body.b2_dynamicBody; //动态对象
+            bodyDef.position.Set(1, 1);
+            //通过world对象创建body
+            wBall = wWorld.CreateBody(bodyDef);
+            //用shape、friction、density等定义fixture
+            var fixDef = new b2FixtureDef();
+            fixDef.density = 1.0;
+            fixDef.friction = 0.0; //摩擦
+            fixDef.restitution = 0.25; //elasticity 弹性
+            fixDef.shape = new b2CircleShape(ballRadius);
+            //在body上创建fixture
+            wBall.CreateFixture(fixDef);
+
+            /*———————————— 创建迷宫body ——————————————*/
+            bodyDef.type = b2Body.b2_staticBody; //static对象
+            fixDef.shape = new b2PolygonShape(); //多边形
+            fixDef.shape.SetAsBox(0.5, 0.5); //以坐标为中心构建轴对称长方体
+            for (var i = 0; i < maze.dimension; i++) {
+                for (var j = 0; j < maze.dimension; j++) {
+                    if (maze[i][j]) {
+                        bodyDef.position.x = i;
+                        bodyDef.position.y = j;
+                        wWorld.CreateBody(bodyDef).CreateFixture(fixDef);
+                    }
+                }
+            }
+        }
+
+        /*———————————— 创建迷宫网络 ——————————————*/
+        function generate_maze_mesh(field) {
+            var myGeometry = new THREE.Geometry(); //创建一个几何对象
+            for (var i = 0; i < field.dimension; i++) {
+                for (var j = 0; j < field.dimension; j++) {
+                    if (field[i][j]) {
+                        var geometry = new THREE.CubeGeometry(1, 1, 1, 1, 1, 1);
+                        var mesh_ij = new THREE.Mesh(geometry); //网络模型对象
+                        mesh_ij.position.x = i;
+                        mesh_ij.position.y = j;
+                        mesh_ij.position.z = 0.5;
+                        THREE.GeometryUtils.merge(myGeometry, mesh_ij);
+                    }
+                }
+            }
+            //模拟镜面反射实现高光效果
+            var material = new THREE.MeshPhongMaterial({
+                map: brickTexture
+            }); //.map 设置颜色贴图
+
+            var mesh = new THREE.Mesh(myGeometry, material)
+            return mesh;
+        }
+
+
+        /*———————————————— 返回渲染后的wWorld ———————————————*/
+        function createRenderWorld() {
+
+            // 创建场景object
+            scene = new THREE.Scene();
+
+            // 添加光源
+            light = new THREE.PointLight(0xffffff, 1);
+            light.position.set(1, 1, 1.3);
+            scene.add(light);
+
+            // 添加小球
+            g = new THREE.SphereGeometry(ballRadius, 32, 16); //球形几何体
+            m = new THREE.MeshPhongMaterial({
+                map: ironTexture
+            }); //map 设置颜色贴图
+            ballMesh = new THREE.Mesh(g, m);
+            ballMesh.position.set(1, 1, ballRadius); //设置球体网络
+            scene.add(ballMesh);
+
+            // 添加camera
+            var aspect = (window.innerWidth - 4) / (window.innerHeight - 4);
+            camera = new THREE.PerspectiveCamera(60, aspect, 1, 1000); //设置透视投影相机
+            camera.position.set(1, 1, 5);
+            scene.add(camera);
+
+            // 添加网格
+            mazeMesh = generate_maze_mesh(maze);
+            scene.add(mazeMesh);
+
+            // 添加地面
+            g = new THREE.PlaneGeometry(mazeDimension * 10, mazeDimension * 10, mazeDimension, mazeDimension);
+            planeTexture.wrapS = planeTexture.wrapT = THREE.RepeatWrapping;
+            planeTexture.repeat.set(mazeDimension * 5, mazeDimension * 5);
+            m = new THREE.MeshPhongMaterial({
+                map: planeTexture
+            }); //map 设置颜色贴图
+            planeMesh = new THREE.Mesh(g, m);
+            planeMesh.position.set((mazeDimension - 1) / 2, (mazeDimension - 1) / 2, 0);
+            planeMesh.rotation.set(Math.PI / 2, 0, 0);
+            scene.add(planeMesh);
+
+        }
+
+
+        /*———————————————— 更新物理世界配置 ———————————————*/
+        function updatePhysicsWorld() {
+
+
+            // 添加friction摩擦
+            var lv = wBall.GetLinearVelocity();
+            lv.Multiply(0.95);
+            wBall.SetLinearVelocity(lv);
+
+            // 添加用户控制球体运动的力
+            var f = new b2Vec2(keyAxis[0] * wBall.GetMass() * 0.25, keyAxis[1] * wBall.GetMass() * 0.25);
+            wBall.ApplyImpulse(f, wBall.GetPosition());
+            keyAxis = [0, 0];
+
+            // 设置逻辑帧
+            wWorld.Step(1 / 60, 8, 3);
+            //参数：(timeStep,velocityIterations,positionIterations)
+        }
+
+
+        /*———————————————— 更新渲染后世界配置 ———————————————*/
+        function updateRenderWorld() {
+
+            // 更新球的位置
+            var stepX = wBall.GetPosition().x - ballMesh.position.x;
+            var stepY = wBall.GetPosition().y - ballMesh.position.y;
+            ballMesh.position.x += stepX;
+            ballMesh.position.y += stepY;
+
+            // 更新球的旋转情况
+            var tempMat = new THREE.Matrix4(); //提供4x4 matrix
+            tempMat.makeRotationAxis(new THREE.Vector3(0, 1, 0), stepX / ballRadius); //旋转轴
+            tempMat.multiplySelf(ballMesh.matrix);
+            ballMesh.matrix = tempMat;
+            tempMat = new THREE.Matrix4();
+            tempMat.makeRotationAxis(new THREE.Vector3(1, 0, 0), -stepY / ballRadius);
+            tempMat.multiplySelf(ballMesh.matrix);
+            ballMesh.matrix = tempMat;
+            ballMesh.rotation.getRotationFromMatrix(ballMesh.matrix);
+
+            // 更新相机和光源位置
+            camera.position.x += (ballMesh.position.x - camera.position.x) * 0.1;
+            camera.position.y += (ballMesh.position.y - camera.position.y) * 0.1;
+            camera.position.z += (5 - camera.position.z) * 0.1;
+            light.position.x = camera.position.x;
+            light.position.y = camera.position.y;
+            light.position.z = camera.position.z - 3.7;
+        }
+
+
+        /*———————————————— 循环game！ ———————————————*/
+        function gameLoop() {
+
+            switch (gameState) {
+
+                case 'initialize':
+                    //初始化游戏
+                    maze = generateSquareMaze(mazeDimension); //自定义函数初始化maze
+                    maze[mazeDimension - 1][mazeDimension - 2] = false;
+                    createPhysicsWorld();
+                    createRenderWorld();
+                    camera.position.set(1, 1, 5);
+                    light.position.set(1, 1, 1.3);
+                    light.intensity = 0; //光强——初始化的时候为0
+                    var level = Math.floor(((mazeDimension-8) - 1) / 2 - 4); //第几关
+                    $('#level').html('Level ' + level);
+                    gameState = 'fade in'; //初始化完成
+                    break;
+
+                case 'fade in':
+                    //逐渐调节亮度（每次只调节Δ，直到调整到要求intensity再转入‘play’状态
+                    light.intensity += 0.1 * (1.0 - light.intensity);
+                    renderer.render(scene, camera);
+                    if (Math.abs(light.intensity - 1.0) < 0.05) {
+                        light.intensity = 1.0;
+                        gameState = 'play'
+                    }
+                    break;
+
+                case 'play':
+                    updatePhysicsWorld();
+                    updateRenderWorld();
+                    renderer.render(scene, camera);
+
+                    // Check for victory.
+                    var mazeX = Math.floor(ballMesh.position.x + 0.5);
+                    var mazeY = Math.floor(ballMesh.position.y + 0.5);
+                    if (mazeX == mazeDimension && mazeY == mazeDimension - 2) {
+                        mazeDimension += 2;
+                        gameState = 'fade out';
+                    }
+                    break;
+
+                case 'fade out':
+                    //逐渐减小亮度（每次只调节Δ，直到调整到要求intensity再转入‘initialize’状态
+                    updatePhysicsWorld();
+                    updateRenderWorld();
+                    light.intensity += 0.1 * (0.0 - light.intensity);
+                    renderer.render(scene, camera);
+                    if (Math.abs(light.intensity - 0.0) < 0.1) {
+                        light.intensity = 0.0;
+                        renderer.render(scene, camera);
+                        gameState = 'initialize'
+                    }
+                    break;
+
+            }
+
+            requestAnimationFrame(gameLoop);
+
+        }
+
+
+        //resize窗口大小
+        function onResize() {
+            renderer.setSize(window.innerWidth - 4, window.innerHeight - 4);
+            camera.aspect = (window.innerWidth - 4) / (window.innerHeight - 4);
+            camera.updateProjectionMatrix(); //更新相机数据
+        }
+
+
+        function onMoveKey(axis) {
+            keyAxis = axis.slice(0);
+        }
+
+
+        //给jquery对象扩展centerv方法,调整height
+        jQuery.fn.centerv = function () {
+            wh = window.innerHeight - 4;
+            h = this.outerHeight();
+            this.css("position", "absolute");
+            this.css("top", Math.max(0, (wh - h) / 2) + "px");
+            return this;
+        }
+
+        //调整width
+        jQuery.fn.centerh = function () {
+            ww = window.innerWidth - 4;
+            w = this.outerWidth();
+            this.css("position", "absolute");
+            this.css("left", Math.max(0, (ww - w) / 2) + "px");
+            return this;
+        }
+
+
+        jQuery.fn.center = function () {
+            this.centerv();
+            this.centerh();
+            return this;
+        }
+
+
+        $(document).ready(function () {
+
+            // 初始化instructions
+            $('#instructions').center();
+            $('#instructions').hide();
+            //调用keyboard.js 键入`i` 显示提示
+            KeyboardJS.bind.key('i', function () {
+                    $('#instructions').show()
+                },
+                function () {
+                    $('#instructions').hide()
+                });
+
+            // 创建渲染器
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth - 4, window.innerHeight - 4);
+            document.body.appendChild(renderer.domElement);
+            //var gameboard = document.getElementById(mainboard);
+            //gameboard.append(renderer.domElement);
+
+            // 绑定键盘 
+            KeyboardJS.bind.axis('left', 'right', 'down', 'up', onMoveKey); //绑定上下左右键
+            KeyboardJS.bind.axis('a', 'd', 's', 'w', onMoveKey); //绑定asdw键
+
+            // 设置resize 事件处理
+            $(window).resize(onResize);
+
+            // 初始化gamestate
+            gameState = 'initialize';
+
+            // 开始循环
+            requestAnimationFrame(gameLoop);
+
+        })
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lobster+Two:wght@700&display=swap');
+
+        body {
+            background: black;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica';
+        }
+
+        #instructions {
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            text-align: center;
+            padding: 32px;
+            margin: 0px;
+            display: inline;
+            border: 2px solid white;
+        }
+
+        #help {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            padding: 4px;
+            color: white;
+        }
+
+        #level {
+            position: absolute;
+            left: 80px;
+            top: 150px;
+            z-index: 1;
+            padding: 4px;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 40px;
+            font-family: 'Gloria Hallelujah', cursive;
+        }
+
+        #time {
+            position: absolute;
+            left: 80px;
+            top: 200px;
+            z-index: 1;
+            padding: 4px;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 40px;
+            font-family: 'Gloria Hallelujah', cursive;
+        }
+
+        #move {
+            position: absolute;
+            left: 65px;
+            top: 410px;
+            z-index: 1;
+            padding: 4px;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 40px;
+            font-family: 'Gloria Hallelujah', cursive;
+        }
+
+        #board {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            display: inline;
+
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            text-align: center;
+
+            margin: 0px;
+            display: inline;
+        }
+
+        #begin-my {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 5px 10px 18px #57565646;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 9;
+            position: fixed;
+            bottom: 100px;
+            right: 60px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id='instructions'>
+        <img src="./res/instruction.png" width="640" height="241">
+    </div>
+
+    <div id='help'>
+        Hold down the 'I' key for instructions.
+    </div>
+
+    <div id='level'>
+        Level 1
+    </div>
+
+    <!--<div id="time">0</div>-->
+
+    <div id="move">
+        To Move
+    </div>
+
+    <!--<div id="begin-div">
+        <button id="begin-my">START</button>
+    </div>  -->
+
+
+    <div id='board'>
+        <img src="./res/notationboard.png" alt=board style="width :300px; height:600px; ">
+    </div>
+
+
+</body>
+
+</html>
