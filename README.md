@@ -48,16 +48,16 @@ TONGJI Univ.
 
    - 修改前：
 
-     <img src="https://github.com/CindyCindy424/WebOnlineGames/blob/main/img/image-20200903002535916.png"  style="zoom:50%;" /><br>
+     <img src="https://github.com/CindyCindy424/WebOnlineGames/blob/main/img/image-20200903002535916.png"  width="50%" height="50%" style="zoom:50%;" /><br>
 
 
    - 修改后：
 
-     <img src="https://github.com/CindyCindy424/WebOnlineGames/blob/main/img/image-20200903002605466.png" alt="image-20200903002605466" style="zoom: 33%;" />
+     <img src="https://github.com/CindyCindy424/WebOnlineGames/blob/main/img/image-20200903002605466.png" width="50%" height="50%" alt="image-20200903002605466" style="zoom: 33%;" />
      
 2. **添加了两个游戏的平台界面作为首页。**
 
-<img src="https://github.com/CindyCindy424/WebOnlineGames/blob/main/img/image-20200902221724243.png" alt="image-20200902222016407" style="zoom: 33%;" /><br>
+<img src="https://github.com/CindyCindy424/WebOnlineGames/blob/main/img/image-20200902221724243.png" width="50%" height="50%" alt="image-20200902222016407" style="zoom: 33%;" /><br>
 
 
 3. **修改了`小球迷宫` 游戏的地图设置，增加了每一关的迷宫难度。**
