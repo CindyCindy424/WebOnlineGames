@@ -48,15 +48,16 @@ TONGJI Univ.
 
    - 修改前：
 
-     <img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200903002535916.png" alt="image-20200903002535916" style="zoom:50%;" />
+     <img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053734image-20200903002535916.png" alt="image-20200903002535916" style="zoom:50%;" />
+
 
    - 修改后：
 
-     <img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200903002605466.png" alt="image-20200903002605466" style="zoom: 33%;" />
+     <img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053745image-20200903002605466.png" alt="image-20200903002605466" style="zoom: 33%;" />
 
 2. **添加了两个游戏的平台界面作为首页。**
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902222016407.png" alt="image-20200902222016407" style="zoom: 33%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053754image-20200902222016407.png" alt="image-20200902222016407" style="zoom: 33%;" />
 
 
 
@@ -82,7 +83,7 @@ TONGJI Univ.
 
 #### 效果图
 
-![image-20200902222016407](C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902222016407.png)
+![image-20200902222016407](https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053754image-20200902222016407.png)
 
 #### 介绍
 
@@ -104,7 +105,7 @@ TONGJI Univ.
 
 #### 主界面介绍
 
-![image-20200902222650564](C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902222650564.png)
+![image-20200902222650564](https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053823image-20200902222650564.png)
 
 ***
 
@@ -112,7 +113,7 @@ TONGJI Univ.
 
 主界面左上方有本游戏的游戏介绍，并设置有关闭`Instructions`的按钮可以将该界面关掉。若不手动关闭，游戏开始后也会自动隐藏。若隐藏后想再次查看该界面，点击`Help`按钮即可。
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902223334193.png" alt="image-20200902223334193" style="zoom:50%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053833image-20200902223334193.png" alt="image-20200902223334193" style="zoom:50%;" />
 
 ***
 
@@ -120,7 +121,7 @@ TONGJI Univ.
 
 游戏提供两种操控方式：①键盘上的`↑ ↓ ← →`键，②或者是屏幕右下角的点击按钮。同样，该区域也可以**手动关闭**或**重新开启**。
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902223831405.png" alt="image-20200902223831405" style="zoom: 67%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053840image-20200902223831405.png" alt="image-20200902223831405" style="zoom: 67%;" />
 
 ***
 
@@ -140,7 +141,7 @@ TONGJI Univ.
 
 在开始界面上可以选择不同的难度等级进行游戏。
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902225249819.png" alt="image-20200902225249819" style="zoom:50%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053856image-20200902225249819.png" alt="image-20200902225249819" style="zoom:50%;" />
 
 开始游戏后本轮选择的难度等级会显示在屏幕右上方。
 
@@ -150,7 +151,7 @@ TONGJI Univ.
 
 本游戏的基本逻辑是需要玩家操纵小鸡🐥过马路，所以前进步数越多，得分越多。分数会和当前关卡难度一起 实时显示在屏幕右上角。
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902225228427.png" alt="image-20200902225228427" style="zoom:33%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053911image-20200902225228427.png" alt="image-20200902225228427" style="zoom:33%;" />
 
 ***
 
@@ -170,7 +171,7 @@ TONGJI Univ.
 
 该按钮位于界面的右下方，玩家可以自行选择开关背景音乐。
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902230215408.png" alt="image-20200902230215408" style="zoom: 67%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116054024image-20200902230215408.png" alt="image-20200902230215408" style="zoom: 67%;" />
 
 ***
 
@@ -182,11 +183,11 @@ TONGJI Univ.
 
 - 游戏主人公
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902230906327.png" alt="image-20200902230906327" style="zoom: 67%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116054222image-20200902230906327.png" alt="image-20200902230906327" style="zoom: 67%;" />
 
 - 被车辆撞击碾压后 （也添加了相应音效）
 
-![image-20200902230949749](C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902230949749.png)
+![image-20200902230949749](https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116054230image-20200902230949749.png)
 
 ***
 
@@ -196,17 +197,17 @@ TONGJI Univ.
 
 - 在车道上移动的车辆🚗 （不同类型和颜色的车辆）
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902231544007.png" alt="image-20200902231544007" style="zoom: 67%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116055130image-20200902231544007.png" alt="image-20200902231544007" style="zoom: 67%;" />
 
 
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902231629206.png" alt="image-20200902231629206" style="zoom:50%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116055138image-20200902231629206.png" alt="image-20200902231629206" style="zoom:50%;" />
 
 
 
 - 草地 & 树木🌳
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902231737850.png" alt="image-20200902231737850" style="zoom:67%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116055146image-20200902231737850.png" alt="image-20200902231737850" style="zoom:67%;" />
 
 ***
 
@@ -226,7 +227,7 @@ TONGJI Univ.
 
 #### 游戏介绍
 
-![image-20200902232505600](C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902232505600.png)
+![image-20200902232505600](https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116060129image-20200902232505600.png)
 
 
 
@@ -236,7 +237,7 @@ TONGJI Univ.
 
 在游戏界面按下`i`键 即可跳出说明界面。
 
-![image-20200902232444992](C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902232444992.png)
+![image-20200902232444992](https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116055154image-20200902232339380.png)
 
 
 
@@ -246,7 +247,7 @@ TONGJI Univ.
 
 绑定了`↑ ↓ ← →`  和 `W S A D`， 两种操纵方式均可操纵小球进行前进、后退、左移、右移
 
-<img src="C:\Users\Cindy Deng\AppData\Roaming\Typora\typora-user-images\image-20200902232803278.png" alt="image-20200902232803278" style="zoom:50%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116055236image-20200902232803278.png" alt="image-20200902232803278" style="zoom:50%;" />
 
 ***
 
