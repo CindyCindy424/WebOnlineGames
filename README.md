@@ -48,7 +48,7 @@ TONGJI Univ.
 
    - 修改前：
 
-     <img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053734image-20200903002535916.png" alt="image-20200903002535916" style="zoom:50%;" />
+     <img src="https://images.cnblogs.com/cnblogs_com/cindycindy/1814799/o_201116053734image-20200903002535916.png"  style="zoom:50%;" />
 
 
    - 修改后：
